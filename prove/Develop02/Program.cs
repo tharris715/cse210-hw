@@ -29,7 +29,6 @@ class Program
             {
                 Console.WriteLine(prompt);
                 Console.Write("> ");
-                //Entry newEntry = new Entry();
                 newEntry._writing = Console.ReadLine();
                 
             }
@@ -55,15 +54,8 @@ class Program
             }
             else if (choice == "4")
             {
-                Console.WriteLine("What would you like to call the file?");
-                string filename = Console.ReadLine();
-                
-                string date = DateTime.Now.ToString("MM/dd/yyyy");
-                File.AppendAllText(filename, Environment.NewLine);
-                File.AppendAllText(filename, $"Date: {date} - {prompt}");
-                File.AppendAllText(filename, Environment.NewLine);
-                File.AppendAllText(filename, $"{newEntry._writing}");
-                File.AppendAllText(filename, Environment.NewLine);
+                Journal myJournal = new Journal(journalFile);
+                myJournal.Save(prompt, newEntry);
                 
             }
             else
