@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-class Journal {
+public class Journal {
     private string fileName;
     public string[] entries;
 
@@ -20,16 +20,18 @@ class Journal {
         }
     }
 
-    // trying toadd save feature to Journal
-    public void Save(string prompt, Entry newEntry) {
+    // trying to add save feature to Journal
+    //public void Save(string prompt, Entry newEntry) {
+    public void Save(List<string> entryList) {
         Console.WriteLine("What would you like to call the file?");
         string filename = Console.ReadLine();
                 
         string date = DateTime.Now.ToString("MM/dd/yyyy");
         File.AppendAllText(filename, Environment.NewLine);
-        File.AppendAllText(filename, $"Date: {date} - {prompt}");
-        File.AppendAllText(filename, Environment.NewLine);
-        File.AppendAllText(filename, $"{newEntry._writing}");
-        File.AppendAllText(filename, Environment.NewLine);
+        File.AppendAllText(filename, $"Date: {date} - ");
+        foreach (string ent in entryList)
+        {
+            File.AppendAllText(filename, $"{ent}");
+        }
     }
 }

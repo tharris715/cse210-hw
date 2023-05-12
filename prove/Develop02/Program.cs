@@ -7,10 +7,8 @@ class Program
     static void Main(string[] args)
     {
         Entry newEntry = new Entry();
+        List<string> entryList = new List<string>();
         string journalFile = "journal.txt";
-        List<string> prompts = new List<string> {"What was your favorite part of today?", "What would you redo today if you could?", "What event from today would you like to share with your parents?", "Was there anything unusual about what happened today?", "What was the biggest news event you heard about today?", "What did you do today to become more Christlike?", "Did your children do anything funny or noteworthy today?"};
-        PromptGenerator generator = new PromptGenerator(prompts);
-        string prompt = generator.Display();
         string choice = "0";
         while (choice != "5")
         {
@@ -24,25 +22,29 @@ class Program
             choice = Console.ReadLine();
 
             
-
             if (choice == "1")
             {
+                PromptGenerator generator = new PromptGenerator();
+                string prompt = generator.Display();
                 Console.WriteLine(prompt);
                 Console.Write("> ");
                 newEntry._writing = Console.ReadLine();
-                
+                entryList.Add(prompt );
+                entryList.Add(" \n");
+                entryList.Add(newEntry._writing);
             }
 
             else if (choice == "2")
-            {
+            {   
+                // Try making a list to store the new entries, and display just those when option 2 is selected
                 // This should be able to display entries as well as the journal, but I'm not sure how to do that
                 // Currently it just displays the saved journal
                 Journal myJournal = new Journal(journalFile);
                 myJournal.Load();
                 myJournal.Display();
+
                
             }
-
 
             else if (choice == "3")
             {
@@ -55,7 +57,7 @@ class Program
             else if (choice == "4")
             {
                 Journal myJournal = new Journal(journalFile);
-                myJournal.Save(prompt, newEntry);
+                myJournal.Save(entryList);
                 
             }
             else
