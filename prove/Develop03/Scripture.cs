@@ -2,6 +2,7 @@ public class Scripture{
 
     private string _scripture = "Adam fell that men might be and men are that they might have joy.";
 
+    Reference head = new Reference("2 Nephi", 2, 25);
     private string _header = "2 Nephi 2:25";
 
 
@@ -32,8 +33,8 @@ public class Scripture{
 
     for (int i = 0; i < 3; i++)
     {
-        int randomIndex = random.Next(verse.Length);
-        verse[randomIndex] = new string('_', verse[randomIndex].Length);
+        int index = random.Next(verse.Length);
+        verse[index] = new string('_', verse[index].Length);
 
     }
 
