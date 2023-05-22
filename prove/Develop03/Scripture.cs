@@ -37,6 +37,22 @@ public class Scripture{
         Console.WriteLine($"{headString} {_scripture}");
     }
 
+public void Hide() {
+    string[] verse = _scripture.Split(' ');
+    Random random = new Random();
+
+    for (int i = 0; i < 3; i++)
+    {
+        int index = random.Next(verse.Length);
+        verse[index] = new string('_', verse[index].Length);
+         
+    }
+
+    string replacedString = string.Join(" ", verse);
+    SetScripture(replacedString);
+    Console.Clear();
+    Display();
+    }
     
 
 }
