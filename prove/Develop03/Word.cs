@@ -1,49 +1,41 @@
 public class Word {
+    private bool _visibility;
+    public List<bool> _hideString;
+    public Scripture _scripture;
 
-    // a class to represent individual words. Check if all words were replaced with _, if so end the program
-    // Get the verse as it is on the screen
+    public string hideStringText;
 
-    public string GetText()
-    {
-        // Create an instance of the Scripture class
-        Scripture scripture = new Scripture();
-
-        // Call the GetScripture method to retrieve the scripture string
-        string scriptureText = scripture.GetScripture();
-
-        // Use the scripture string as needed
-        return scriptureText;
+    public Word(Scripture scripture) {
+        _scripture = scripture;
+        _hideString = new List<bool>(); // Initialize _hideString list
     }
 
-    string verse GetText();
-    Random random = new Random();
+    // create a list of true, for the length of the scripture
 
-    for (int i = 0; i < 3; i++)
-    {
-        int index = random.Next(verse.Length);
-        verse[index] = new string('_', verse[index].Length);
-        // take each word and determine if it is _ or leters
-        // if _ in word count += 1
-        // if count = verse.Length end the
+    public void SetList(List<bool> hideList) {
+        _hideString = hideList;
     }
 
-    // public Word(string word) {
-    //     string[] verseA = verse._scripture;
-    //     List<string> words = verse.ToList();
-    //     foreach (string word in words) {
-    //         Word aWord = new Word(word);
-    //     }
-    // }
-
-
-
-
-    public void Hidden() {
-
+    public List<bool> GetList() {
+        return _hideString;
     }
 
-    public void GetText(string verse) {
-        return verse;
+    public void GetText() {
+        string scriptureText = _scripture.GetScripture();
+        string[] myWords = scriptureText.Split(' ');
+
+        for (int i = 0; i < myWords.Length; i++) {
+            
+            if (myWords[i].Contains("_")) {
+                _visibility = false;
+            } else {
+                _visibility = true;
+            }
+
+            _hideString[i] = _visibility;
+            SetList(_hideString);
+            hideStringText = string.Join(", ", _hideString);
+        }
     }
 
 }

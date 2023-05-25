@@ -1,27 +1,14 @@
 public class Scripture{
 
-    public string _scripture = "Adam fell that men might be and men are that they might have joy.";
+    private string _scripture = "Adam fell that men might be and men are that they might have joy.";
 
-    private Reference _header = new Reference("2 Nephi", 2, 25);
+    private Reference _header;
 
-    // public Scripture() {
-    //     string[] verse = _scripture.Split(' ');
-    //     List<string> words = verse.ToList();
-    //     foreach (string word in words) {
-    //         Word aWord = new Word(word);
-    //         // call methods to hide or show the word
-
-    //     }
-
-    // }
-
-    // Set and get header
-    public Reference GetHeader() {
-        return _header;
+    public Scripture(Reference reference) {
+        _header = reference;
+        _scripture = GetScripture();
     }
-    public void SetHeader(Reference head) {
-        _header = head;
-    }
+
 
     // Set and get scripture
     public string GetScripture() {
@@ -32,27 +19,28 @@ public class Scripture{
     }
 
     public void Display() {
-        // add section to display the hidden version of the scripture
+        // Display the scripture and the reference
         string headString = _header.ToString();
         Console.WriteLine($"{headString} {_scripture}");
     }
 
 public void Hide() {
+    // split the scripture into individual words
     string[] verse = _scripture.Split(' ');
     Random random = new Random();
 
-    for (int i = 0; i < 3; i++)
-    {
+    // loop through the scripture 3 times to remove a word each time
+    for (int i = 0; i < 3; i++) {
         int index = random.Next(verse.Length);
-        verse[index] = new string('_', verse[index].Length);
-         
+        verse[index] = new string('_', verse[index].Length); 
     }
-
+    // Join the string back together again
     string replacedString = string.Join(" ", verse);
     SetScripture(replacedString);
     Console.Clear();
     Display();
     }
     
+
 
 }
