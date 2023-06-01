@@ -17,13 +17,13 @@ public class Scripture{
     public void SetScripture(string scripture) {
         _scripture = scripture;
     }
-
+    // Display the Reference and scripture to the screen
     public void Display() {
         // Display the scripture and the reference
         string headString = _header.ToString();
         Console.WriteLine($"{headString} {_scripture}");
     }
-
+// Hide picks the words of teh scripture that will be hidden and turns them into ____
 public void Hide() {
     // split the scripture into individual words
     string[] verse = _scripture.Split(' ');
@@ -41,6 +41,4 @@ public void Hide() {
     Display();
     }
     
-
-
 }
