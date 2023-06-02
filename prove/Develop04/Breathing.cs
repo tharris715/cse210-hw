@@ -5,7 +5,8 @@ public class Breathing : Activity {
     private string _endMessage;
 
     public Breathing() {
-        _startMessage = "Welcome to the Breathing Activity.\n This activity will help you relax by walking you through breathing in and out slowly.\n Clear your mind and focus on your breathing.\n How long, in seconds, would you like your session?";      
+        // use : base to get the duration
+        // this is what Activity should display _startMessage = "Welcome to the Breathing Activity.\n This activity will help you relax by walking you through breathing in and out slowly.\n Clear your mind and focus on your breathing.\n How long, in seconds, would you like your session?";      
         _duration = GetDuration();
         _endMessage = $"Well done! \n You have completed another {_duration} seconds of the Breathing Activity.";
     }
