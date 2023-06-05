@@ -6,10 +6,6 @@ class Program
     {
         Console.Clear();
         
-        Activity act = new Activity();
-        
-
-        
     
     
         Console.WriteLine("Menu Options:");
@@ -21,22 +17,23 @@ class Program
 
         string choice = Console.ReadLine();
 
-        while (choice != "4") {
-            if (choice == "1") {
-                Breathing breath = new Breathing();
-                breath.DisplayStartMesssage(); // not working
-                int breathSeconds = Int32.Parse(Console.ReadLine());
-                breath.SetDuration(breathSeconds);
-                breath.ActiveBreathing(breathSeconds);
-                breath.DisplayFinishMesssage(); // not working
+        
 
+        while (choice != "4") {
+            
+
+            if (choice == "1") {
+                BreathingActivity breath = new BreathingActivity("", "", 0);
+                
 
             }
             else if (choice == "2") {
+                ReflectionActivity ref = new ReflectionActivity("", "", 0, "", "");
 
             }
             else if (choice == "3") {
-                Listing myList = new Listing("prompt");
+                //ListingActivity breath = new ListingActivity("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", act1.GetDuration(), GetPrompt());
+
 
             }
             

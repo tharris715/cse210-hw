@@ -1,5 +1,4 @@
-public class Reflection : Activity{
-
+public class ReflectionActivity : Activity{
 
     private string _prompt;
     private string _question;
@@ -28,11 +27,21 @@ public class Reflection : Activity{
 
 
     // input a prompt list and question list, and it will use the random pickers to get the prompt and questions to display
-    public Reflection(string prompt, string question) {
-        _prompt = RandomPrompt(_promptList);
+    public ReflectionActivity(string name, string description, int duration, string prompt, string question) : base(name, description, duration) {
+        name = "Reflection Activity";
+        description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+        duration = GetDuration();
+        Console.WriteLine(RandomPrompt(_promptList));
         
-        // get more as the user answers previous ones
-        _question = RandomQuestion(_questionList);
+        // get more as the user answers previous ones and start a timer
+        
+        DateTime start = DateTime.Now;
+        DateTime end = start.AddSeconds(duration);
+
+        while (DateTime.Now < end) {
+            _question = RandomQuestion(_questionList);
+            Console.WriteLine(_question); // does this work??
+        }
 
     }
 

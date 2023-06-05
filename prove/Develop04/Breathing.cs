@@ -1,31 +1,23 @@
-public class Breathing : Activity {
+public class BreathingActivity : Activity {
 
-    private int _duration;
-    private string _startMessage;
-    private string _endMessage;
+    
 
-    public Breathing() {
-        // use : base to get the duration
-        // this is what Activity should display _startMessage = "Welcome to the Breathing Activity.\n This activity will help you relax by walking you through breathing in and out slowly.\n Clear your mind and focus on your breathing.\n How long, in seconds, would you like your session?";      
-        _duration = GetDuration();
-        _endMessage = $"Well done! \n You have completed another {_duration} seconds of the Breathing Activity.";
+    public BreathingActivity(string name, string description, int duration) : base(name, description, duration) {
+        name = "Breathing Activity";
+        description = "Welcome to the Breathing Activity.\n This activity will help you relax by walking you through breathing in and out slowly.\n Clear your mind and focus on your breathing.";
+        duration = GetDuration();
+        ActiveBreathing(duration);
+        DisplayEnd(name, duration);
+        
     }
 
-
-    public int GetDuration() {
-        return _duration;
-    }
-
-    public void SetDuration(int duration) {
-        _duration = duration; 
-    }
 
     public void ActiveBreathing(int duration) {
         Console.Clear();
         Console.WriteLine("Get ready...");
         // show the loading circle
         Loading();
-        int seconds = _duration;
+        int seconds = duration;
 
         DateTime start = DateTime.Now;
         DateTime end = start.AddSeconds(seconds);
@@ -51,11 +43,4 @@ public class Breathing : Activity {
     }
 
 
-    public void BreatheIn() {
-
-    }
-
-    public void BreatheOut() {
-
-    }
 }
