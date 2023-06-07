@@ -6,10 +6,10 @@ public class Activity {
 
     public Activity(string name, string description, int duration) {
         Console.Clear();
-        name = _name;
-        description = _description;
+        _name = name;
+        _description = description;
         DisplayStart(name, description);
-        Console.WriteLine("How long, in seconds, would you like for your session? ");
+        Console.Write("How long, in seconds, would you like for your session? ");
         _duration = int.Parse(Console.ReadLine());
 
     }
@@ -46,13 +46,21 @@ public class Activity {
         }
     }
 
-    public void Wait(int seconds) {
-        seconds = _duration;
-        DateTime start = DateTime.Now;
-        DateTime end = start.AddSeconds(seconds);
+    // public void Wait(int seconds) {
+    //     seconds = _duration;
+    //     DateTime start = DateTime.Now;
+    //     DateTime end = start.AddSeconds(seconds);
 
-        while (DateTime.Now < end) {
-            Thread.Sleep(seconds * 100); // does this work??
+    //     while (DateTime.Now < end) {
+    //         Thread.Sleep(seconds * 100); // does this work??
+    //     }
+    // }
+
+    public void CountDown(int time) {
+        for (int i = time; i > 0; i--) {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
         }
     }
 

@@ -8,15 +8,17 @@ public class BreathingActivity : Activity {
         duration = GetDuration();
         ActiveBreathing(duration);
         DisplayEnd(name, duration);
+        Console.Clear();
         
     }
 
 
     public void ActiveBreathing(int duration) {
         Console.Clear();
-        Console.WriteLine("Get ready...");
-        // show the loading circle
+        Console.Write("Get ready...");
         Loading();
+        Console.WriteLine();   
+        Console.WriteLine();
         int seconds = duration;
 
         DateTime start = DateTime.Now;
@@ -24,18 +26,11 @@ public class BreathingActivity : Activity {
 
         while (DateTime.Now < end) {
             Console.Write("Breathe in... ");
-            for (int i = 5; i > 0; i--) {
-                Console.Write(i);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-            }
+            CountDown(6);
             Console.WriteLine();
             Console.Write("Breathe out... ");
-            for (int i = 5; i > 0; i--) {
-                Console.Write(i);
-                Thread.Sleep(1000);
-                Console.Write("\b \b");
-            }
+            CountDown(4);
+
             Console.WriteLine();
             Console.WriteLine();
         }
