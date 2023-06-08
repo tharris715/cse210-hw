@@ -8,17 +8,15 @@ public class BreathingActivity : Activity {
         duration = GetDuration();
         ActiveBreathing(duration);
         DisplayEnd(name, duration);
-        Console.Clear();
-        
+        Console.Clear();  
     }
 
 
     public void ActiveBreathing(int duration) {
-        Console.Clear();
-        Console.Write("Get ready...");
-        Loading();
-        Console.WriteLine();   
-        Console.WriteLine();
+        // This is the core of the breathing activity. It prints the messages, 
+        // handles the time for breathing in and out, and limits the activity 
+        // to the user selected duration
+        
         int seconds = duration;
 
         DateTime start = DateTime.Now;
@@ -33,9 +31,6 @@ public class BreathingActivity : Activity {
 
             Console.WriteLine();
             Console.WriteLine();
-        }
-        
+        }        
     }
-
-
 }

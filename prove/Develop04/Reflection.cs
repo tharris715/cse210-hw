@@ -11,11 +11,7 @@ public class ReflectionActivity : Activity{
         name = "Reflection Activity";
         description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
         duration = GetDuration();
-        Console.Clear();
-        Console.Write("Get ready...");
-        Loading();
-        Console.WriteLine();   
-        Console.WriteLine();     
+           
         Console.WriteLine("Consider the following prompt:");
         Console.WriteLine();
         Console.WriteLine($"--- {RandomPrompt(_promptList)} ---");
