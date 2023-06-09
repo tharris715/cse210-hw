@@ -15,8 +15,7 @@ public class Activity {
         Console.Clear();
         Console.Write("Get ready...");
         Loading();
-        Console.WriteLine();   
-        Console.WriteLine();
+        Console.WriteLine("\n");   
 
     }
 
@@ -51,15 +50,13 @@ public class Activity {
         }
     }
 
-    // public void Wait(int seconds) {
-    //     seconds = _duration;
-    //     DateTime start = DateTime.Now;
-    //     DateTime end = start.AddSeconds(seconds);
+    protected DateTime Wait(int seconds) {
+        seconds = _duration;
+        DateTime start = DateTime.Now;
+        DateTime end = start.AddSeconds(seconds);
 
-    //     while (DateTime.Now < end) {
-    //         Thread.Sleep(seconds * 100); // does this work??
-    //     }
-    // }
+        return end;
+    }
 
     protected void CountDown(int time) {
         // This method displays a countdown timer that accepts an 
@@ -73,8 +70,7 @@ public class Activity {
 
     protected void DisplayStart(string name, string description) {
         // Print the start message to the screen using the given name and description parameters
-        Console.WriteLine($"Welcome to the {name}");
-        Console.WriteLine();
+        Console.WriteLine($"Welcome to the {name}\n");
         Console.WriteLine(description);
     }
 
@@ -91,5 +87,11 @@ public class Activity {
             _name = name;
             _description = description;         
         }
+
+    protected string RandomizeList(List<string> myList) {
+        Random random = new Random();
+        int index = random.Next(myList.Count);
+        return myList[index]; 
+    }
 
 }
