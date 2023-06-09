@@ -33,12 +33,12 @@ public class ListingActivity : Activity {
         Console.Clear();
     }
 
-    public string GetPrompt() {
+    private string GetPrompt() {
         return _prompt;
     }
 
 
-    public string RandomPrompt(List<string> promptList) {
+    private string RandomPrompt(List<string> promptList) {
         var random = new Random();
         int index = random.Next(promptList.Count);
         return promptList[index];

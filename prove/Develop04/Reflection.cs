@@ -42,14 +42,14 @@ public class ReflectionActivity : Activity{
     }
 
     // pick a random prompt
-    public string RandomPrompt(List<string> promptList) {
+    private string RandomPrompt(List<string> promptList) {
         Random random = new Random();
         int index = random.Next(promptList.Count);
         return promptList[index]; 
     }
 
     // pick a random question
-    public string RandomQuestion(List<string> questionList) {
+    private string RandomQuestion(List<string> questionList) {
         Random random = new Random();
         int index = random.Next(questionList.Count);
         

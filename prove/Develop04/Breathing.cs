@@ -1,6 +1,6 @@
 public class BreathingActivity : Activity {
 
-    
+
 
     public BreathingActivity(string name, string description, int duration) : base(name, description, duration) {
         name = "Breathing Activity";
@@ -12,7 +12,7 @@ public class BreathingActivity : Activity {
     }
 
 
-    public void ActiveBreathing(int duration) {
+    private void ActiveBreathing(int duration) {
         // This is the core of the breathing activity. It prints the messages, 
         // handles the time for breathing in and out, and limits the activity 
         // to the user selected duration
