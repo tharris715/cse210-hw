@@ -2,7 +2,15 @@ public class EternalGoal : Goal {
 
 
     public EternalGoal(string type, string name, string description, int points) : base(type, name, description, points) {
-        CreateGoal();
+        type = "Eternal Goal";
+        // get user input to fill in goal parameters
+        Console.Write("What is the name of your goal? ");
+        name = Console.ReadLine();
+        Console.Write("What is a short description of the goal? ");
+        description = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal? ");
+        points = int.Parse(Console.ReadLine());        
+        
 
     }
 
@@ -10,9 +18,9 @@ public class EternalGoal : Goal {
 
     }
 
-    public override void IsComplete() {
+    // public override void IsComplete() {
 
-    }
+    // }
 
 
 

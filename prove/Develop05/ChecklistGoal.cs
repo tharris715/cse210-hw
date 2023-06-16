@@ -6,16 +6,28 @@ public class ChecklistGoal : Goal {
     public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) : base(type, name, description, points) {
         _times = times;
         _bonus = bonus;
-        CreateGoal();
+        type = "ChecklistGoal";
+        // get user input to fill in goal parameters
+        Console.Write("What is the name of your goal? ");
+        name = Console.ReadLine();
+        Console.Write("What is a short description of the goal? ");
+        description = Console.ReadLine();
+        Console.Write("What is the amount of points associated with this goal? ");
+        points = int.Parse(Console.ReadLine());
+        Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+        times = int.Parse(Console.ReadLine());
+        Console.Write("What is the bonus for accomplishing it that many times? ");
+        bonus = int.Parse(Console.ReadLine());
+        
     }
 
     public override void RecordEvent(int points) {
 
     }
 
-    public override void IsComplete() {
+    // public override void IsComplete() {
 
-    }
+    // }
 
 
 

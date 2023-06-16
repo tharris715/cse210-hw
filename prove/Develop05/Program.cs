@@ -34,8 +34,8 @@ class Program
                 
                     if (goalType == 1) {
                         SimpleGoal simple = new SimpleGoal("", "", "", 0);
-                        goals.Add(simple);
-
+                        goals.Add(simple); // need to get string representation to add to list?
+                        break;
                     }
                     else if (goalType == 2) {
                         EternalGoal eternal = new EternalGoal("", "", "", 0);

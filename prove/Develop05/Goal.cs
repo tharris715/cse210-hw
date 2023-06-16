@@ -11,6 +11,8 @@ public abstract class Goal{
         _name = name;
         _description = description;
         _points = points;
+
+        
     }
 
     public virtual string GetGoalType() {
@@ -33,9 +35,10 @@ public abstract class Goal{
     
     public abstract void RecordEvent(int points);
      // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
-    public abstract void IsComplete();
-    // This method should return true if the goal is completed. The way you determine if a goal is complete is different for each type of goal.
+    public void IsComplete() {
 
+    }
+    // This method should return true if the goal is completed.
 
 
 
