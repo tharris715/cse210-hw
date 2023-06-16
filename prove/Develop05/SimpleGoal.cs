@@ -1,15 +1,19 @@
 public class SimpleGoal : Goal {
 
-    public SimpleGoal(string type, string name, string description, int points) : base(type, name, description, points) {
-        type = "Simple Goal";
+    public SimpleGoal() {   
+        
+        
+        string type = "Simple Goal";
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
-        name = Console.ReadLine();
+        string name = Console.ReadLine();
         Console.Write("What is a short description of the goal? ");
-        description = Console.ReadLine();
+        string description = Console.ReadLine();
         Console.Write("What is the amount of points associated with this goal? ");
-        points = int.Parse(Console.ReadLine());
+        int points = int.Parse(Console.ReadLine());
         
+        string simpleString = $"{type}: {name}, {description}, {points}";
+        Console.WriteLine(simpleString);
     }
 
     public override void RecordEvent(int points) {
@@ -25,7 +29,7 @@ public class SimpleGoal : Goal {
     // }
 
 
-    public override SimpleGoal CreateGoal() {
+    public override SimpleGoal CreateGoal() { // should just take a string and turn it into a goal, not user input
         string type = "Simple Goal";
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
@@ -35,9 +39,15 @@ public class SimpleGoal : Goal {
         Console.Write("What is the amount of points associated with this goal? ");
         int points = int.Parse(Console.ReadLine());
         
-        SimpleGoal newGoal = new SimpleGoal(type, name, description, points);
+        SimpleGoal newGoal = new SimpleGoal();
         return newGoal;
         
+    }
+
+    public string GetStringRepresentation(string type, string name, string description, int points) {
+        string goalString = $"{type}: {name}, {description}, {points}";
+        return goalString;
+
     }
 
 

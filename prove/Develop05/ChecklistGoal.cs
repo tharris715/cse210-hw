@@ -3,7 +3,7 @@ public class ChecklistGoal : Goal {
     private int _times;
     private int _bonus;
 
-    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) : base(type, name, description, points) {
+    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) {
         _times = times;
         _bonus = bonus;
         type = "ChecklistGoal";

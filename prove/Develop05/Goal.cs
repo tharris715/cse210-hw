@@ -6,11 +6,8 @@ public abstract class Goal{
     private int _points;
 
 
-    public Goal(string type, string name, string description, int points) {
-        _type = type;
-        _name = name;
-        _description = description;
-        _points = points;
+    public Goal() {
+        
 
         
     }
@@ -79,11 +76,11 @@ public abstract class Goal{
 
     }
 
-    public void GetStringRepresentation(Goal goal) {
-        string goalString = goal._type + goal._name + goal._description + goal._points;
-        Console.WriteLine(goalString);
+    // public string GetStringRepresentation(string type, string name, string description, int points) {
+    //     string goalString = $"{type}: {name}, {description}, {points}";
+    //     return goalString;
 
-    }
+    // }
 
     // public Goal CreateNewGoal(string goalString) {
     //     List<string> firstSplit = new List<string> (goalString.Split(":"));

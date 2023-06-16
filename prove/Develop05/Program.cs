@@ -8,7 +8,7 @@ class Program
         Console.Clear();
         
         string choice = "";
-        List<Goal> goals = new List<Goal>();
+        List<string> goals = new List<string>();
 
 
         while (choice != "6") {
@@ -33,18 +33,19 @@ class Program
                 while (goalType < 4) {
                 
                     if (goalType == 1) {
-                        SimpleGoal simple = new SimpleGoal("", "", "", 0);
-                        goals.Add(simple); // need to get string representation to add to list?
+                        SimpleGoal simple = new SimpleGoal();
+                        string simpleString = simple.GetStringRepresentation(simple.GetGoalType(),simple.GetName(), simple.GetDescription(), simple.GetPoints());
+                        goals.Add(simpleString); // need to get string representation to add to list?
                         break;
                     }
                     else if (goalType == 2) {
                         EternalGoal eternal = new EternalGoal("", "", "", 0);
-                        goals.Add(eternal);
+                        //goals.Add(eternal);
                         break;
                     }
                     else if (goalType == 3) {
                         ChecklistGoal check = new ChecklistGoal("", "", "", 0, 0, 0);
-                        goals.Add(check);
+                        //goals.Add(check);
                         break;
                     }
                     else {
@@ -57,7 +58,7 @@ class Program
             }
             else if (choice == "2") {
                 Console.WriteLine("The goals are: ");
-                foreach (Goal goal in goals) {
+                foreach (string goal in goals) {
                     Console.WriteLine(goal);
                 }
             }

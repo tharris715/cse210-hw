@@ -1,7 +1,7 @@
 public class EternalGoal : Goal {
 
 
-    public EternalGoal(string type, string name, string description, int points) : base(type, name, description, points) {
+    public EternalGoal(string type, string name, string description, int points) {
         type = "Eternal Goal";
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
