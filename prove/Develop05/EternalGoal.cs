@@ -41,6 +41,15 @@ public class EternalGoal : Goal {
         
     }
 
+    public string GetStringRepresentation(Goal goal) {
+        string type = goal.GetGoalType();
+        string name = goal.GetName();
+        string description = goal.GetDescription();
+        int points = goal.GetPoints();
+        return $"{type} : {name}, {description}, {points}";
+
+    }
+
 
 
 

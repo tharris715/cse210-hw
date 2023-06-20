@@ -34,18 +34,20 @@ class Program
                 
                     if (goalType == 1) {
                         SimpleGoal simple = new SimpleGoal();
-                        string simpleString = simple.GetStringRepresentation(simple.GetGoalType(),simple.GetName(), simple.GetDescription(), simple.GetPoints());
+                        string simpleString = simple.GetStringRepresentation(simple);
                         goals.Add(simpleString); // need to get string representation to add to list?
                         break;
                     }
                     else if (goalType == 2) {
                         EternalGoal eternal = new EternalGoal("", "", "", 0);
-                        //goals.Add(eternal);
+                        string eternalString = eternal.GetStringRepresentation(eternal);
+                        goals.Add(eternalString);
                         break;
                     }
                     else if (goalType == 3) {
                         ChecklistGoal check = new ChecklistGoal("", "", "", 0, 0, 0);
-                        //goals.Add(check);
+                        string checklistString = check.GetStringRepresentation(check);
+                        goals.Add(checklistString);
                         break;
                     }
                     else {
@@ -68,10 +70,15 @@ class Program
                 //placeholder.Save(filename); // how to write everything to file??
             }
             else if (choice == "4") {
+
+                //Loading();
+
             }
             else if (choice == "5") {
                 // savedGoal.RecordEvent(points);
             }
         }
     }
+
+    
 }

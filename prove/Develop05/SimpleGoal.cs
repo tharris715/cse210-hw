@@ -44,11 +44,15 @@ public class SimpleGoal : Goal {
         
     }
 
-    public string GetStringRepresentation(string type, string name, string description, int points) {
-        string goalString = $"{type}: {name}, {description}, {points}";
-        return goalString;
+    public string GetStringRepresentation(Goal goal) {
+        string type = goal.GetGoalType();
+        string name = goal.GetName();
+        string description = goal.GetDescription();
+        int points = goal.GetPoints();
+        return $"{type} : {name}, {description}, {points}";
 
     }
+
 
 
 }

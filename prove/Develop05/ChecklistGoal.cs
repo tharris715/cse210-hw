@@ -3,6 +3,15 @@ public class ChecklistGoal : Goal {
     private int _times;
     private int _bonus;
 
+    public int GetTimes() {
+        return _times;
+    }
+    public int GetBonus() {
+        return _bonus;
+    }
+
+
+
     public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) {
         _times = times;
         _bonus = bonus;
@@ -54,6 +63,17 @@ public class ChecklistGoal : Goal {
         return newGoal;
 
         
+    }
+
+    public string GetStringRepresentation(ChecklistGoal goal) {
+        string type = goal.GetGoalType();
+        string name = goal.GetName();
+        string description = goal.GetDescription();
+        int points = goal.GetPoints();
+        int times = goal.GetTimes();
+        int bonus = goal.GetBonus();
+        return $"{type} : {name}, {description}, {points}";
+
     }
 
 }
