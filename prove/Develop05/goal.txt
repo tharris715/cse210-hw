@@ -1,0 +1,3 @@
+0
+SimpleGoal:s, e, 4, False
+EternalGoal:e, r, 4

@@ -10,27 +10,53 @@ public class ChecklistGoal : Goal {
         return _bonus;
     }
 
-
-
-    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) {
+    public void SetTimes(int times) {
         _times = times;
+    }
+    public void SetBonus(int bonus) {
         _bonus = bonus;
-        type = "ChecklistGoal";
+    }
+
+
+
+    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus) : base(type, name, description, points){
+        SetType("ChecklistGoal");
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
-        name = Console.ReadLine();
+        SetName(Console.ReadLine());
         Console.Write("What is a short description of the goal? ");
-        description = Console.ReadLine();
+        SetDescription(Console.ReadLine());
         Console.Write("What is the amount of points associated with this goal? ");
-        points = int.Parse(Console.ReadLine());
+        SetPoints(int.Parse(Console.ReadLine()));
         Console.Write("How many times does this goal need to be accomplished for a bonus? ");
-        times = int.Parse(Console.ReadLine());
+        SetTimes(int.Parse(Console.ReadLine()));
         Console.Write("What is the bonus for accomplishing it that many times? ");
-        bonus = int.Parse(Console.ReadLine());
+        SetBonus(int.Parse(Console.ReadLine()));
         
     }
 
-    public override void RecordEvent(int points) {
+    public override void RecordEvent(List<string> goals) {
+        int choice = 0;
+        int points = 0;
+        int times = 0;
+        int bonus = 0;
+        Console.WriteLine("The goals are:");
+        foreach (string myGoal in goals) {
+            Console.WriteLine(myGoal);
+            
+        }
+        Console.Write("Which goal did you accomplish? ");
+        choice = int.Parse(Console.ReadLine());
+        for (int i = 0; i < goals.Count(); i ++) {
+            foreach (string myGoal in goals) {
+                if (choice == myGoal[0]) {
+                    string[] parts = myGoal.Replace(":", ",").Split(",");
+                    points = int.Parse(parts[3]);  
+                }
+            }
+        }
+        Console.WriteLine($"Congratulations! You earned {points} points!");
+
 
     }
 
@@ -72,7 +98,7 @@ public class ChecklistGoal : Goal {
         int points = goal.GetPoints();
         int times = goal.GetTimes();
         int bonus = goal.GetBonus();
-        return $"{type} : {name}, {description}, {points}";
+        return $"{type}:{name}, {description}, {points}, {times}, {bonus}";
 
     }
 

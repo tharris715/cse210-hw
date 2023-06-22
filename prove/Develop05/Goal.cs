@@ -4,12 +4,11 @@ public class Goal{
     private string _name;
     private string _description;
     private int _points;
+    protected int _totalPoints;
 
 
-    public Goal() {
-        
-
-        
+    public Goal(string type, string name, string description, int points) {
+          
     }
 
     public virtual string GetGoalType() {
@@ -23,6 +22,10 @@ public class Goal{
     }
     public virtual int GetPoints() {
         return _points;
+    }
+
+    public virtual int GetTotalPoints() {
+        return _totalPoints;
     }
     
     public void SetType(string type) {
@@ -41,55 +44,41 @@ public class Goal{
         _points = points;
     }
 
+    public void SetTotalPoints(int totalPoints) {
+        _totalPoints = totalPoints;
+    }
     
     
-    public virtual void RecordEvent(int points) {
+    public virtual void RecordEvent(List<string> goals) {
+        int choice = 0;
+        Console.WriteLine("The goals are:");
+        //list the goals
+        Console.Write("Which goal did you accomplish? ");
+        choice = int.Parse(Console.ReadLine());
+        //change complete status
+        Console.WriteLine("Congratulations! You earned xxxx points!");
 
     }
      // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
-    public void IsComplete() {
-
+    public virtual Boolean IsComplete(List<string> goals) {
+        return false;
     }
     // This method should return true if the goal is completed.
 
 
 
+    // public int Total(List<string> goals) {
+    //     int totalPoints = 0;
+    //     foreach (string myGoal in goals) {
+    //         string[] parts = myGoal.Replace(":", ",").Split(",");
+    //         totalPoints += int.Parse(parts[3]);
+            
+    //     }
+    //     // only count if the goal is complete
+    //     return totalPoints;
+    // }
 
 
-
-
-
-
-    
-    
-    public void Save() {
-        Console.WriteLine("What would you like to name the file? ");
-        string fileName = Console.ReadLine();
-        
-        using (StreamWriter outputFile = new StreamWriter(fileName)) {
-        
-        outputFile.WriteLine(); // use just like Console.WriteLine() need to add everything in the created list of goals
-
-        }
-    }
-
-    public void Load(string filename) {
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        foreach (string line in lines) {
-            string[] parts = line.Split(",");
-            string type = parts[0];
-            string name = parts[1];
-            string description = parts[2];
-            string points = parts[3];
-            if (line.Count() > 3) {
-                string times = parts[4];
-                string bonus = parts[5];
-            }
-
-        }
-
-
-    }
 
     // public string GetStringRepresentation(string type, string name, string description, int points) {
     //     string goalString = $"{type}: {name}, {description}, {points}";
@@ -115,7 +104,7 @@ public class Goal{
     // }
 
     public virtual Goal CreateGoal() {
-        Goal goal = new Goal();
+        Goal goal = new Goal("", "", "", 0);
 
         return goal;
     }

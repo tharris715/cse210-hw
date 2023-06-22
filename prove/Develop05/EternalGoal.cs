@@ -1,20 +1,38 @@
 public class EternalGoal : Goal {
 
 
-    public EternalGoal(string type, string name, string description, int points) {
-        type = "Eternal Goal";
+    public EternalGoal(string type, string name, string description, int points) : base(type, name, description, points) {
+        SetType("EternalGoal");
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
-        name = Console.ReadLine();
+        SetName(Console.ReadLine());
         Console.Write("What is a short description of the goal? ");
-        description = Console.ReadLine();
+        SetDescription(Console.ReadLine());
         Console.Write("What is the amount of points associated with this goal? ");
-        points = int.Parse(Console.ReadLine());        
-        
+        SetPoints(int.Parse(Console.ReadLine()));        
 
     }
 
-    public override void RecordEvent(int points) {
+    public override void RecordEvent(List<string> goals) {
+        int choice = 0;
+        int points = 0;
+        Console.WriteLine("The goals are:");
+        foreach (string myGoal in goals) {
+            Console.WriteLine(myGoal);
+            
+        }
+        Console.Write("Which goal did you accomplish? ");
+        choice = int.Parse(Console.ReadLine());
+        for (int i = 0; i < goals.Count(); i ++) {
+            foreach (string myGoal in goals) {
+                if (choice == myGoal[0]) {
+                    string[] parts = myGoal.Replace(":", ",").Split(",");
+                    points = int.Parse(parts[3]);  
+                }
+            }
+        }
+        Console.WriteLine($"Congratulations! You earned {points} points!");
+
 
     }
 
@@ -46,7 +64,7 @@ public class EternalGoal : Goal {
         string name = goal.GetName();
         string description = goal.GetDescription();
         int points = goal.GetPoints();
-        return $"{type} : {name}, {description}, {points}";
+        return $"{type}:{name}, {description}, {points}";
 
     }
 
