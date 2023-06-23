@@ -6,14 +6,19 @@ class Program
     static void Main(string[] args)
     {
         Console.Clear();
+
+        Load loading = new Load();
         
         string choice = "";
         List<string> goals = new List<string>();
         List<Goal> dGoal = new List<Goal>();
-        Goal g = new Goal("", "", "", 0);
+        Goal g = new Goal();
 
-        Console.WriteLine("You have xx points.\n");
+        
         while (choice != "6") {
+            // Display point amount
+            Console.WriteLine($"You have {loading.GetTotalPoints()} points.\n");
+
             // menu options
             Console.WriteLine("Menu Options:");
             Console.WriteLine("   1. Create New Goal");
@@ -34,23 +39,23 @@ class Program
                 while (goalType < 4) {
                 
                     if (goalType == 1) {
-                        SimpleGoal simple = new SimpleGoal("", "", "", 0, false);
+                        SimpleGoal simple = new SimpleGoal();
                         dGoal.Add(simple);
                         string simpleString = simple.GetStringRepresentation();
                         goals.Add(simpleString); // need to get string representation to add to list?
                         break;
                     }
                     else if (goalType == 2) {
-                        EternalGoal eternal = new EternalGoal("", "", "", 0);
+                        EternalGoal eternal = new EternalGoal();
                         dGoal.Add(eternal);
-                        string eternalString = eternal.GetStringRepresentation(eternal);
+                        string eternalString = eternal.GetStringRepresentation();
                         goals.Add(eternalString);
                         break;
                     }
                     else if (goalType == 3) {
-                        ChecklistGoal check = new ChecklistGoal("", "", "", 0, 0, 0);
+                        ChecklistGoal check = new ChecklistGoal();
                         dGoal.Add(check);
-                        string checklistString = check.GetStringRepresentation(check);
+                        string checklistString = check.GetStringRepresentation();
                         goals.Add(checklistString);
                         break;
                     }
@@ -67,7 +72,8 @@ class Program
 
                 foreach (Goal goal in dGoal) {
                     if (goal.GetGoalType() == "ChecklistGoal") {
-                        Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()}) -- Currently completed: 0/X");
+                        
+                        Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()}) -- Currently completed: {goal.GetCheckComplete()}/{goal.GetTimes()}");
                         count += 1;
                     }
                     else {
@@ -76,20 +82,22 @@ class Program
                     }
                 }
                 Console.WriteLine();
-                Console.WriteLine($"You have XX points.\n");
+                //Console.WriteLine($"You have {loading.GetTotalPoints()} points.\n");
             }
             else if (choice == "3") {
                 Save saving = new Save();
-                saving.Saving(goals, g.GetTotalPoints());
+                saving.Saving(goals, loading.GetTotalPoints());
 
             }
             else if (choice == "4") {
-                Load loading = new Load();
-                loading.Loading();
+                dGoal = loading.Loading();
+                foreach (Goal goal in dGoal) {
+                    goals.Add(goal.GetStringRepresentation());
+                }
 
             }
             else if (choice == "5") {
-                g.RecordEvent(goals);
+                g.RecordEvent(dGoal);
             }
         }
     }

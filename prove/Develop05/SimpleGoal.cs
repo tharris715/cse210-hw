@@ -9,7 +9,7 @@ public class SimpleGoal : Goal {
         _complete = complete;
     }
 
-    public SimpleGoal(string type, string name, string description, int points, bool complete) : base(type, name, description, points){   
+    public SimpleGoal() {   
         SetType("SimpleGoal");
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
@@ -20,9 +20,18 @@ public class SimpleGoal : Goal {
         SetPoints(int.Parse(Console.ReadLine()));
 
     }
+    public SimpleGoal(string type, string name, string description, int points, bool complete) {   
+        SetType(type);
+        SetName(name);
+        SetDescription(description);
+        SetPoints(points);
+        SetComplete(complete);
+
+    }
+
 
     public override void RecordEvent(List<Goal> goals) {
-        // new idea is to use a list og goals, use setters or getters where needed, check for is complete? and that will change the display from [ ] to [x]
+        // new idea is to use a list of goals, use setters or getters where needed, check for is complete? and that will change the display from [ ] to [x]
         // it also needs to record the number of points
         int choice = 0;
         int points = 0;
@@ -40,12 +49,14 @@ public class SimpleGoal : Goal {
             foreach (Goal myGoal in goals) {
                 if (myGoal.GetGoalType() == "SimpleGoal") {
                     SetComplete(true);
+                    points = myGoal.GetPoints();
                 }
             }
         }
         Console.WriteLine($"Congratulations! You earned {points} points!");
-        SetTotalPoints(points);
-        Console.WriteLine("You know have XX points.");
+        Load load = new Load();
+        load.SetTotalPoints(points);
+        Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
 
     }
     
@@ -66,22 +77,8 @@ public class SimpleGoal : Goal {
     }
 
 
-    // public override SimpleGoal CreateGoal() { // should just take a string and turn it into a goal, not user input
-    //     string type = "Simple Goal";
-    //     // get user input to fill in goal parameters
-    //     Console.Write("What is the name of your goal? ");
-    //     string name = Console.ReadLine();
-    //     Console.Write("What is a short description of the goal? ");
-    //     string description = Console.ReadLine();
-    //     Console.Write("What is the amount of points associated with this goal? ");
-    //     int points = int.Parse(Console.ReadLine());
-        
-    //     SimpleGoal newGoal = new SimpleGoal(type, name, description, points, false);
-    //     return newGoal;
-        
-    // }
 
-    public string GetStringRepresentation() {
+    public override string GetStringRepresentation() {
         string type = GetGoalType();
         string name = GetName();
         string description = GetDescription();

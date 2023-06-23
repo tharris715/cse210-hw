@@ -1,5 +1,5 @@
 public class Save {
-           
+    // save all attributes of each goal and teh total points
     public void Saving(List<string> goalList, int totalPoints) {
         Console.Write("What would you like to name the file? ");
         string fileName = Console.ReadLine();
@@ -9,11 +9,7 @@ public class Save {
             foreach (string goal in goalList) {
                 outputFile.WriteLine($"{goal}");
                 
-            }
-            
-            
+            } 
         }
-    }
-
-    // need to save all attributes i.e. is the goal complete or not? as well as the names and types etc
+    }    
 }

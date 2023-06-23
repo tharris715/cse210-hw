@@ -5,9 +5,11 @@ public class Goal{
     private string _description;
     private int _points;
     protected int _totalPoints;
+    private int _checkComplete;
+    
 
 
-    public Goal(string type, string name, string description, int points) {
+    public Goal() {
           
     }
 
@@ -24,8 +26,14 @@ public class Goal{
         return _points;
     }
 
-    public virtual int GetTotalPoints() {
-        return _totalPoints;
+    // public virtual int GetTotalPoints() {
+    //     return _totalPoints;
+    // }
+    public virtual int GetTimes() {
+        return 0;
+    }
+    public virtual int GetCheckComplete() {
+        return _checkComplete;
     }
     
     public void SetType(string type) {
@@ -44,19 +52,36 @@ public class Goal{
         _points = points;
     }
 
-    public void SetTotalPoints(int totalPoints) {
-        _totalPoints = totalPoints;
-    }
+    // public void SetTotalPoints(int totalPoints) {
+    //     _totalPoints = totalPoints;
+    // }
     
     
-    public virtual void RecordEvent(List<string> goals) {
+    
+    public virtual void RecordEvent(List<Goal> goals) {
         int choice = 0;
+        int points = 0;
+        int count = 1;
         Console.WriteLine("The goals are:");
-        //list the goals
+        foreach (Goal myGoal in goals) {
+            Console.WriteLine($"{count}. {myGoal.GetName()}");
+            count += 1;
+            
+        }
         Console.Write("Which goal did you accomplish? ");
         choice = int.Parse(Console.ReadLine());
-        //change complete status
-        Console.WriteLine("Congratulations! You earned xxxx points!");
+        // how do I access the goal based on the number it was given?
+
+        // for (int i = 0; i < goals.Count(); i ++) {
+        //     foreach (Goal myGoal in goals) {
+        //         if (myGoal.GetGoalType() == "SimpleGoal") {
+        //             SetComplete(true);
+        //         }
+        //     }
+        // }
+        Console.WriteLine($"Congratulations! You earned {points} points!");
+        //SetTotalPoints(points);
+        Console.WriteLine("You now have XX points.");
 
     }
      // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
@@ -67,49 +92,17 @@ public class Goal{
 
 
 
-    // public int Total(List<string> goals) {
-    //     int totalPoints = 0;
-    //     foreach (string myGoal in goals) {
-    //         string[] parts = myGoal.Replace(":", ",").Split(",");
-    //         totalPoints += int.Parse(parts[3]);
-            
-    //     }
-    //     // only count if the goal is complete
-    //     return totalPoints;
-    // }
 
-
-
-    // public string GetStringRepresentation(string type, string name, string description, int points) {
-    //     string goalString = $"{type}: {name}, {description}, {points}";
-    //     return goalString;
-
-    // }
-
-    // public Goal CreateNewGoal(string goalString) {
-    //     List<string> firstSplit = new List<string> (goalString.Split(":"));
-    //     string type = firstSplit[0];
-    //     List<string> secondSplit = new List<string> (firstSplit[1].Split(","));
-    //     string name = secondSplit[0];
-    //     string description = secondSplit[1];
-    //     int points = int.Parse(secondSplit[2]);
-    //     if (secondSplit.Count() > 2) {
-    //             int times = int.Parse(secondSplit[3]);
-    //             int bonus = int.Parse(secondSplit[4]);
-    //         }
-
-    //     return Goal goal = new Goal(type, name, description, points);
-        
-
-    // }
-
-    public virtual Goal CreateGoal() {
-        Goal goal = new Goal("", "", "", 0);
-
-        return goal;
+    public virtual string GetStringRepresentation() {
+        return "";
     }
 
-        
+
+    // public virtual Goal CreateGoal() {
+    //     Goal goal = new Goal();
+
+    //     return goal;
+    // }
 
 
 }
