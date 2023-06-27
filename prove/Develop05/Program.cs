@@ -17,6 +17,7 @@ class Program
         
         while (choice != "6") {
             // Display point amount
+            
             Console.WriteLine($"You have {loading.GetTotalPoints()} points.\n");
 
             // menu options
@@ -90,10 +91,13 @@ class Program
 
             }
             else if (choice == "4") {
-                dGoal = loading.Loading();
+                Console.Write("What is the name of the file you would like to load? ");
+                string fileName = Console.ReadLine();
+                dGoal = loading.Loading(fileName);
                 foreach (Goal goal in dGoal) {
                     goals.Add(goal.GetStringRepresentation());
                 }
+                loading.SetTotalPoints(int.Parse(File.ReadLines(fileName).First()));
 
             }
             else if (choice == "5") {

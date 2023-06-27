@@ -81,19 +81,9 @@ public class ChecklistGoal : Goal {
 
     }
 
-    public override Boolean IsComplete(List<string> goals) {
-        string comp = "[x]";
-        
-        foreach (string myGoal in goals) {
-            if (myGoal.Contains(comp)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-            
-        }
-        return false;
+    public override void IsComplete(Goal goals) {
+        int comp = GetCheckComplete();
+        SetCheckComplete(comp += 1);
     }
 
 

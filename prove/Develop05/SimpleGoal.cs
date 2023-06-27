@@ -61,19 +61,11 @@ public class SimpleGoal : Goal {
     }
     
     
-    public override Boolean IsComplete(List<string> goals) {
-        string comp = "[x]";
+    public override void IsComplete(Goal goal) {
+        //string comp = "[x]";
+        SetComplete(true);
         
-        foreach (string myGoal in goals) {
-            if (myGoal.Contains(comp)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-            
-        }
-        return false;
+        
     }
 
 
@@ -87,7 +79,6 @@ public class SimpleGoal : Goal {
         return $"{type}:{name}, {description}, {points}, {complete}";
 
     }
-
 
 
 }

@@ -3,17 +3,16 @@ public class Load {
 
     private int _totalPoints;
     public void SetTotalPoints(int totalPoints) {
-        _totalPoints += totalPoints;
+        _totalPoints = totalPoints;
     }
     public virtual int GetTotalPoints() {
         return _totalPoints;
     }
-    public List<Goal> Loading() {
+    public List<Goal> Loading(string fileName) {
         // initialize goal list
         List<Goal> goalList = new List<Goal>();
         //Get file name from user
-        Console.Write("What is the name of the file you would like to load? ");
-        string fileName = Console.ReadLine();
+        
         // read the first line of the file to get the points
         SetTotalPoints(int.Parse(File.ReadLines(fileName).First()));
         // save all the lines from the file to the goals array

@@ -66,27 +66,41 @@ public class Goal{
         foreach (Goal myGoal in goals) {
             Console.WriteLine($"{count}. {myGoal.GetName()}");
             count += 1;
-            
         }
         Console.Write("Which goal did you accomplish? ");
         choice = int.Parse(Console.ReadLine());
-        // how do I access the goal based on the number it was given?
+        
+        // This next part should call IsComplete and do whatever each class needs to have done
+        for (int i = 0; i < goals.Count(); i ++) {
+            foreach (Goal myGoal in goals) {
+                if (myGoal.GetGoalType() == "SimpleGoal") {
+                    myGoal.IsComplete(myGoal);
+                    points = myGoal.GetPoints();
+                    Load loads = new Load();
+                    loads.SetTotalPoints(myGoal.GetPoints());
+                }
+                else if (myGoal.GetGoalType() == "EternalGoal") {
+                    myGoal.IsComplete(myGoal);
+                    points = myGoal.GetPoints();
+                    Load loads = new Load();
+                    loads.SetTotalPoints(myGoal.GetPoints());
+                }
+                else if (myGoal.GetGoalType() == "ChecklistGoal") {
+                    myGoal.IsComplete(myGoal);
+                    points = myGoal.GetPoints();
+                }
+            }
 
-        // for (int i = 0; i < goals.Count(); i ++) {
-        //     foreach (Goal myGoal in goals) {
-        //         if (myGoal.GetGoalType() == "SimpleGoal") {
-        //             SetComplete(true);
-        //         }
-        //     }
-        // }
+        }
         Console.WriteLine($"Congratulations! You earned {points} points!");
-        //SetTotalPoints(points);
-        Console.WriteLine("You now have XX points.");
+        Load load = new Load();
+        load.SetTotalPoints(points);
+        Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
 
     }
      // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
-    public virtual Boolean IsComplete(List<string> goals) {
-        return false;
+    public virtual void IsComplete(Goal goal) {
+        
     }
     // This method should return true if the goal is completed.
 
