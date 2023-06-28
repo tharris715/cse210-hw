@@ -1,4 +1,4 @@
-15
+0
 SimpleGoal:simple goal, this is my description, 15, False
 EternalGoal:eternal goal, eternal description, 20
 ChecklistGoal:checklist goal, checklist description, 50, 4, 100, 0

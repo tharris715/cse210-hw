@@ -62,6 +62,7 @@ public class Goal{
         int choice = 0;
         int points = 0;
         int count = 1;
+        Load load = new Load();
         Console.WriteLine("The goals are:");
         foreach (Goal myGoal in goals) {
             Console.WriteLine($"{count}. {myGoal.GetName()}");
@@ -73,27 +74,27 @@ public class Goal{
         // This next part should call IsComplete and do whatever each class needs to have done
         for (int i = 0; i < goals.Count(); i ++) {
             foreach (Goal myGoal in goals) {
-                if (myGoal.GetGoalType() == "SimpleGoal") {
-                    myGoal.IsComplete(myGoal);
-                    points = myGoal.GetPoints();
-                    Load loads = new Load();
-                    loads.SetTotalPoints(myGoal.GetPoints());
-                }
-                else if (myGoal.GetGoalType() == "EternalGoal") {
-                    myGoal.IsComplete(myGoal);
-                    points = myGoal.GetPoints();
-                    Load loads = new Load();
-                    loads.SetTotalPoints(myGoal.GetPoints());
-                }
-                else if (myGoal.GetGoalType() == "ChecklistGoal") {
-                    myGoal.IsComplete(myGoal);
-                    points = myGoal.GetPoints();
+                if (i == choice) {
+                    if (myGoal.GetGoalType() == "SimpleGoal") {
+                        myGoal.IsComplete(myGoal);
+                        points = myGoal.GetPoints();
+                        load.SetTotalPoints(myGoal.GetPoints());
+                    }
+                    else if (myGoal.GetGoalType() == "EternalGoal") {
+                        myGoal.IsComplete(myGoal);
+                        points = myGoal.GetPoints();
+                        load.SetTotalPoints(myGoal.GetPoints());
+                    }
+                    else if (myGoal.GetGoalType() == "ChecklistGoal") {
+                        myGoal.IsComplete(myGoal);
+                        points = myGoal.GetPoints();
+                        load.SetTotalPoints(myGoal.GetPoints());
+                    }
                 }
             }
 
         }
         Console.WriteLine($"Congratulations! You earned {points} points!");
-        Load load = new Load();
         load.SetTotalPoints(points);
         Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
 

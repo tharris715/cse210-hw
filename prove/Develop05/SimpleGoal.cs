@@ -68,8 +68,6 @@ public class SimpleGoal : Goal {
         
     }
 
-
-
     public override string GetStringRepresentation() {
         string type = GetGoalType();
         string name = GetName();
