@@ -1,7 +1,7 @@
 public class SimpleGoal : Goal {
 
     private bool _complete = false;
-    public bool GetComplete() {
+    public override bool GetComplete() {
         return _complete;
     }
     
@@ -62,10 +62,7 @@ public class SimpleGoal : Goal {
     
     
     public override void IsComplete(Goal goal) {
-        //string comp = "[x]";
-        SetComplete(true);
-        
-        
+        SetComplete(true);    
     }
 
     public override string GetStringRepresentation() {

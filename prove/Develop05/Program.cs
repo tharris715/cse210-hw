@@ -73,9 +73,24 @@ class Program
 
                 foreach (Goal goal in dGoal) {
                     if (goal.GetGoalType() == "ChecklistGoal") {
-                        
-                        Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()}) -- Currently completed: {goal.GetCheckComplete()}/{goal.GetTimes()}");
-                        count += 1;
+                        if (goal.GetCheckComplete() == goal.GetTimes()) {
+                            Console.WriteLine($"{count}. [x] {goal.GetName()} ({goal.GetDescription()}) -- Currently completed: {goal.GetCheckComplete()}/{goal.GetTimes()}");
+                            count += 1;
+                        }
+                        else {
+                            Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()}) -- Currently completed: {goal.GetCheckComplete()}/{goal.GetTimes()}");
+                            count += 1;
+                        }
+                    }
+                    else if (goal.GetGoalType() == "SimpleGoal"){
+                        if (goal.GetComplete() == true) {
+                            Console.WriteLine($"{count}. [x] {goal.GetName()} ({goal.GetDescription()})");
+                            count += 1;
+                        }
+                        else {
+                            Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()})");
+                            count += 1;
+                        }
                     }
                     else {
                         Console.WriteLine($"{count}. [ ] {goal.GetName()} ({goal.GetDescription()})");

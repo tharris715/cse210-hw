@@ -6,9 +6,9 @@ public class Goal{
     private int _points;
     protected int _totalPoints;
     private int _checkComplete;
+
+    private bool _complete;
     
-
-
     public Goal() {
           
     }
@@ -26,9 +26,9 @@ public class Goal{
         return _points;
     }
 
-    // public virtual int GetTotalPoints() {
-    //     return _totalPoints;
-    // }
+    public virtual bool GetComplete() {
+        return _complete;
+    }
     public virtual int GetTimes() {
         return 0;
     }
@@ -103,21 +103,12 @@ public class Goal{
     public virtual void IsComplete(Goal goal) {
         
     }
-    // This method should return true if the goal is completed.
-
-
-
+  
 
     public virtual string GetStringRepresentation() {
         return "";
     }
 
-
-    // public virtual Goal CreateGoal() {
-    //     Goal goal = new Goal();
-
-    //     return goal;
-    // }
 
 
 }
