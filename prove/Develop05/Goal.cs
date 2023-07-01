@@ -4,14 +4,22 @@ public class Goal{
     private string _name;
     private string _description;
     private int _points;
-    protected int _totalPoints;
     private int _checkComplete;
 
     private bool _complete;
     
     public Goal() {
-          
+        //because of the way I load in goals I had to move the shared pieces to the sub classes
+        //not sure how to overcome this and add common code back here
     }
+
+    public Goal(string type, string name, string description, int points) {   
+        //constructor version for loading in goals
+        SetType(type);
+        SetName(name);
+        SetDescription(description);
+        SetPoints(points);
+    } 
 
     public virtual string GetGoalType() {
         return _type;
@@ -52,63 +60,20 @@ public class Goal{
         _points = points;
     }
 
-    // public void SetTotalPoints(int totalPoints) {
-    //     _totalPoints = totalPoints;
-    // }
-    
-    
-    
-    public virtual void RecordEvent(List<Goal> goals) {
-        int choice = 0;
-        int points = 0;
-        int count = 1;
-        Load load = new Load();
-        Console.WriteLine("The goals are:");
-        foreach (Goal myGoal in goals) {
-            Console.WriteLine($"{count}. {myGoal.GetName()}");
-            count += 1;
-        }
-        Console.Write("Which goal did you accomplish? ");
-        choice = int.Parse(Console.ReadLine());
-        
-        // This next part should call IsComplete and do whatever each class needs to have done
-        for (int i = 0; i < goals.Count(); i ++) {
-            foreach (Goal myGoal in goals) {
-                if (i == choice) {
-                    if (myGoal.GetGoalType() == "SimpleGoal") {
-                        myGoal.IsComplete(myGoal);
-                        points = myGoal.GetPoints();
-                        load.SetTotalPoints(myGoal.GetPoints());
-                    }
-                    else if (myGoal.GetGoalType() == "EternalGoal") {
-                        myGoal.IsComplete(myGoal);
-                        points = myGoal.GetPoints();
-                        load.SetTotalPoints(myGoal.GetPoints());
-                    }
-                    else if (myGoal.GetGoalType() == "ChecklistGoal") {
-                        myGoal.IsComplete(myGoal);
-                        points = myGoal.GetPoints();
-                        load.SetTotalPoints(myGoal.GetPoints());
-                    }
-                }
-            }
-
-        }
-        Console.WriteLine($"Congratulations! You earned {points} points!");
-        load.SetTotalPoints(points);
-        Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
-
+    public void SetComplete(bool complete) {
+        _complete = complete;
     }
+
      // This method should do whatever is necessary for each specific kind of goal, such as marking a simple goal complete and adding to the number of times a checklist goal has been completed. It should return the point value associated with recording the event (keep in mind that it may contain a bonus in some cases if a checklist goal was just finished, for example).
-    public virtual void IsComplete(Goal goal) {
+    public virtual void IsComplete() {
         
     }
   
 
     public virtual string GetStringRepresentation() {
+        //take the parameters/attributes and make a string out of them
         return "";
     }
-
 
 
 }
