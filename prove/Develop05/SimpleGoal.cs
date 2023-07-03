@@ -1,16 +1,10 @@
 public class SimpleGoal : Goal {
 
     private bool _complete = false;
-    public override bool GetComplete() {
-        return _complete;
-    }
-    
-    public void SetComplete(bool complete) {
-        _complete = complete;
-    }
 
-    public SimpleGoal() {   
-        SetType("SimpleGoal");
+    public SimpleGoal() : base(){   
+        //user input constructor version
+        SetType("SimpleGoal"); 
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
         SetName(Console.ReadLine());
@@ -18,54 +12,18 @@ public class SimpleGoal : Goal {
         SetDescription(Console.ReadLine());
         Console.Write("What is the amount of points associated with this goal? ");
         SetPoints(int.Parse(Console.ReadLine()));
-
     }
-    public SimpleGoal(string type, string name, string description, int points, bool complete) {   
-        SetType(type);
-        SetName(name);
-        SetDescription(description);
-        SetPoints(points);
+    public SimpleGoal(string type, string name, string description, int points, bool complete) : base(type, name, description, points) {   
+        //constructor version for loading in a file
         SetComplete(complete);
-
-    }
-
-
-    public override void RecordEvent(List<Goal> goals) {
-        // new idea is to use a list of goals, use setters or getters where needed, check for is complete? and that will change the display from [ ] to [x]
-        // it also needs to record the number of points
-        int choice = 0;
-        int points = 0;
-        int count = 1;
-        Console.WriteLine("The goals are:");
-        foreach (Goal myGoal in goals) {
-            Console.WriteLine($"{count}. {myGoal.GetName()}");
-            
-        }
-        Console.Write("Which goal did you accomplish? ");
-        choice = int.Parse(Console.ReadLine());
-        // how do I access the goal based on the number it was given?
-
-        for (int i = 0; i < goals.Count(); i ++) {
-            foreach (Goal myGoal in goals) {
-                if (myGoal.GetGoalType() == "SimpleGoal") {
-                    SetComplete(true);
-                    points = myGoal.GetPoints();
-                }
-            }
-        }
-        Console.WriteLine($"Congratulations! You earned {points} points!");
-        Load load = new Load();
-        load.SetTotalPoints(points);
-        Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
-
-    }
+    }   
     
-    
-    public override void IsComplete(Goal goal) {
+    public override void IsComplete() {
         SetComplete(true);    
     }
 
     public override string GetStringRepresentation() {
+        //take the parameters/attributes and make a string out of them
         string type = GetGoalType();
         string name = GetName();
         string description = GetDescription();
@@ -74,6 +32,5 @@ public class SimpleGoal : Goal {
         return $"{type}:{name}, {description}, {points}, {complete}";
 
     }
-
 
 }

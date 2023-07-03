@@ -12,7 +12,7 @@ class Program
         string choice = "";
         List<string> goals = new List<string>();
         List<Goal> dGoal = new List<Goal>();
-        Goal g = new Goal();
+        //Goal g = new Goal();
 
         
         while (choice != "6") {
@@ -37,7 +37,7 @@ class Program
                 Console.Write("The types of Goals are: \n   1. Simple Goal\n   2. Eternal Goal\n   3. Checklist Goal\nWhich type of goal would you like to create? ");
                 int goalType = int.Parse(Console.ReadLine());
 
-                while (goalType < 4) {
+                while (goalType >= 1 || goalType <= 3) {
                 
                     if (goalType == 1) {
                         SimpleGoal simple = new SimpleGoal();
@@ -101,14 +101,22 @@ class Program
                 //Console.WriteLine($"You have {loading.GetTotalPoints()} points.\n");
             }
             else if (choice == "3") {
-                Save saving = new Save();
-                saving.Saving(goals, loading.GetTotalPoints());
 
+                Console.Write("What would you like to name the file? ");
+                string fileName = Console.ReadLine();
+                    
+                using (StreamWriter outputFile = new StreamWriter(fileName)) {
+                    outputFile.WriteLine(loading.GetTotalPoints());//start by saving total points
+                    foreach (string goal in goals) {
+                        outputFile.WriteLine($"{goal}");
+                    } 
+                }
             }
+
             else if (choice == "4") {
                 Console.Write("What is the name of the file you would like to load? ");
                 string fileName = Console.ReadLine();
-                dGoal = loading.Loading(fileName);
+                dGoal = loading.Loading(fileName, dGoal);
                 foreach (Goal goal in dGoal) {
                     goals.Add(goal.GetStringRepresentation());
                 }
@@ -116,10 +124,35 @@ class Program
 
             }
             else if (choice == "5") {
-                g.RecordEvent(dGoal);
+                // new idea is to use a list of goals, use setters or getters where needed, check for is complete? and that will change the display from [ ] to [x]
+                // it also needs to record the number of points
+                int goalChoice = 0;
+                int points = 0;
+                int count = 1;
+                Console.WriteLine("The goals are:");
+                foreach (Goal myGoal in dGoal) {
+                    Console.WriteLine($"{count}. {myGoal.GetName()}");
+                    count += 1;
+                }
+                Console.Write("Which goal did you accomplish? ");
+                goalChoice = int.Parse(Console.ReadLine());
+
+                count = 1;
+                foreach (Goal myGoal in dGoal) {
+                    
+                        if (count == goalChoice) {
+                            myGoal.SetComplete(true);
+                            myGoal.IsComplete();
+                            points = myGoal.GetPoints();
+                        }
+                        count +=1;
+                    
+                }
+                Console.WriteLine($"Congratulations! You earned {points} points!");
+                int tot = loading.GetTotalPoints();
+                loading.SetTotalPoints(tot += points);
             }
         }
     }
 
-    
 }

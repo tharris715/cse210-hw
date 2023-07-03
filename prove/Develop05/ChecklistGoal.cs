@@ -25,7 +25,8 @@ public class ChecklistGoal : Goal {
     }
 
 
-    public ChecklistGoal() {
+    public ChecklistGoal() : base() {
+        //user input constructor version
         SetType("ChecklistGoal");
         // get user input to fill in goal parameters
         Console.Write("What is the name of your goal? ");
@@ -42,52 +43,21 @@ public class ChecklistGoal : Goal {
         
     }
 
-    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus, int complete) {
-        SetType(type);
-        SetName(name);
-        SetDescription(description);
-        SetPoints(points);
+    public ChecklistGoal(string type, string name, string description, int points, int times, int bonus, int complete)  : base(type, name, description, points) {
+        //constructor version for loading in a file
         SetTimes(times);
         SetBonus(bonus);
         SetCheckComplete(complete);
+    }
+
+    public override void IsComplete() {
+        int comp = GetCheckComplete();
+        SetCheckComplete(comp += 1);
         
     }
 
-    public override void RecordEvent(List<Goal> goals) {
-        int choice = 0;
-        int points = 0;
-        int times = 0;
-        int bonus = 0;
-        Console.WriteLine("The goals are:");
-        foreach (Goal myGoal in goals) {
-            Console.WriteLine(myGoal);
-            
-        }
-        Console.Write("Which goal did you accomplish? ");
-        choice = int.Parse(Console.ReadLine());
-        int complete = GetCheckComplete();
-        for (int i = 0; i < goals.Count(); i ++) {
-            foreach (Goal myGoal in goals) {
-                if (myGoal.GetGoalType() == "ChecklistGoal") {
-                    SetCheckComplete(complete += 1) ;
-                    points = myGoal.GetPoints();  
-                }
-            }
-        }
-        Console.WriteLine($"Congratulations! You earned {points} points!");
-        Load load = new Load();
-        load.SetTotalPoints(points);
-        Console.WriteLine($"You now have {load.GetTotalPoints()} points.\n");
-
-    }
-
-    public override void IsComplete(Goal goals) {
-        int comp = GetCheckComplete();
-        SetCheckComplete(comp += 1);
-    }
-
-
     public override string GetStringRepresentation() {
+        //take the parameters/attributes and make a string out of them
         string type = GetGoalType();
         string name = GetName();
         string description = GetDescription();
