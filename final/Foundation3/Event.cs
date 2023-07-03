@@ -16,16 +16,15 @@ public class Event {
         _type = type;
     }
     
+    public string GetEventType() {
+        return _type;
+    }
 
     public string StandardDetails() {
         string sd = $"{_eventTitle}, {_description}, {_date}, {_time}, {_address}";
         return sd;
     }
 
-    public string FullDetails() {
-        string fd = $"{_type} Event: {_eventTitle}, {_description}, {_date}, {_time}, {_address}";
-        return fd;
-    }
 
     public string ShortDetails() {
         string shortDetail = $"{_type} Event: {_eventTitle}, {_date}";

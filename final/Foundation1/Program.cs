@@ -4,8 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // current state, only first comment is displayed, need to display all of them
-
+        //create Video and comment objects and add comments to comment list
         List<Video> videos = new List<Video>();
         List<Comment> vid1Comms = new List<Comment>();
         List<Comment> vid2Comms = new List<Comment>();
@@ -22,11 +21,10 @@ class Program
         vid1Comms.Add(vid1Comm3);
 
         Video video2 = new Video("My Cosmere Theory", "Brando Sando", 1500, vid2Comms);
-        Comment vid2Comm1 = new Comment("Kaladin", "I don't think a surge could work that way. It doesn't use teh right knid of investiture.");
+        Comment vid2Comm1 = new Comment("Kaladin", "I don't think a surge could work that way. It doesn't use the right kind of investiture.");
         Comment vid2Comm2 = new Comment("SwordNimi", "But what happens if an allomancer eats a shardblade?!");
         Comment vid2Comm3 = new Comment("TheSurvivor", "I don't see how this would help me get my body back. 0 stars.");
         Comment vid2Comm4 = new Comment("HarmonyOrDiscord", "From the perspective of a shard, this is all very childish.");
-
 
         vid2Comms.Add(vid2Comm1);
         vid2Comms.Add(vid2Comm2);
@@ -36,21 +34,21 @@ class Program
         Video video3 = new Video("Brain Surgeon answers Twitter Questions", "Wired", 2467, vid3Comms);
         Comment vid3Comm1 = new Comment("Guy1234", "Still doesn't answer why my head always hurts.");
         Comment vid3Comm2 = new Comment("ScienceGuy28", "Great video! More Please!");
-        Comment vid3Comm3 = new Comment("TheInfluencer", "DM me if you want to advertise. $$$$$");
+        Comment vid3Comm3 = new Comment("TheInfluencer", "DM me if you want to advertise. $$$$$!!!");
 
         vid3Comms.Add(vid3Comm1);
         vid3Comms.Add(vid3Comm2);
         vid3Comms.Add(vid3Comm3);
 
-        videos.Add(video1);
-        videos.Add(video2);
-        videos.Add(video3);
 
+        //Display video information and comments to console
         Console.Clear();
         Console.WriteLine("Video 1: ");
         video1.DisplayVideo();
+        Console.WriteLine();
         Console.WriteLine("Video 2: ");
         video2.DisplayVideo();
+        Console.WriteLine();
         Console.WriteLine("Video 3: ");
         video3.DisplayVideo();
     }

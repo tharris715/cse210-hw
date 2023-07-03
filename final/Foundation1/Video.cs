@@ -1,50 +1,19 @@
 public class Video {
 
-//Your program should have a class for a Video that has the responsibility to track 
-//the title, author, and length (in seconds) of the video. 
-//Each video also has responsibility to store a list of comments, 
-//and should have a method to return the number of comments. 
-
-
+    //set attributes
     private string _title;
     private string _author;
     private int _seconds;
     private List<Comment> _comments;
 
-    public void SetTitle(string title) {
-        _title = title;
-    }
-    public void SetAuthor(string author) {
-        _author = author;
-    }
-
-    public void SetSeconds(int seconds) {
-        _seconds = seconds;
-    }
-    public void SetComments(List<Comment> comments) {
-        _comments = comments;
-    }
-
-    public string GetTitle() {
-        return _title;
-    }
-    public string GetAuthor() {
-        return _author;
-    }
-    public int GetSeconds() {
-        return _seconds;
-    }
-    public List<Comment> GetComments() {
-        return _comments;
-    }
-
+    //video constructor utilizing above attributes
     public Video(string title, string author, int seconds, List<Comment> comments) {
         _title = title;
         _author = author;
         _seconds = seconds;
         _comments = comments;
     }
-
+    //method to count comments
     public int CommentCount(List<Comment> comments) {
         int count = 0;
         foreach (Comment comment in comments) {
@@ -52,19 +21,18 @@ public class Video {
         }
         return count;
     }
-
+    //method to display comments
     public string DisplayComment(List<Comment> comments) {
+        string com = "";
         foreach (Comment comment in comments) {
-            string com = comment._name + ": " + comment._text;
-            return com;
+            com += $"{comment._name}: \"{comment._text}\" ";
         }
-        return "";
-           
-
+        return com;
     }
-
+    //method to combine all video and comment information to display to console.
     public void DisplayVideo() {
-        Console.WriteLine($"\"{GetTitle()}\", {GetAuthor()}, {GetSeconds()} seconds long, # of comments: {CommentCount(GetComments())}, {DisplayComment(GetComments())}");
+
+        Console.WriteLine($"\"{_title}\", {_author}, {_seconds} seconds long, # of comments: {CommentCount(_comments)}, {DisplayComment(_comments)}");
     }
 
 }
