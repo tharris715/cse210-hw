@@ -5,7 +5,6 @@ class Program
     static void Main(string[] args)
     {
         //create Video and comment objects and add comments to comment list
-        List<Video> videos = new List<Video>();
         List<Comment> vid1Comms = new List<Comment>();
         List<Comment> vid2Comms = new List<Comment>();
         List<Comment> vid3Comms = new List<Comment>();
@@ -40,16 +39,22 @@ class Program
         vid3Comms.Add(vid3Comm2);
         vid3Comms.Add(vid3Comm3);
 
+        //Add videos to video list
+        List<Video> videos = new List<Video>();
+        videos.Add(video1);
+        videos.Add(video2);
+        videos.Add(video3);
+
 
         //Display video information and comments to console
         Console.Clear();
-        Console.WriteLine("Video 1: ");
-        video1.DisplayVideo();
-        Console.WriteLine();
-        Console.WriteLine("Video 2: ");
-        video2.DisplayVideo();
-        Console.WriteLine();
-        Console.WriteLine("Video 3: ");
-        video3.DisplayVideo();
+        int count = 1;
+        foreach (Video video in videos) {
+            Console.Write($"Video #{count}: ");
+            video.DisplayVideo();
+            Console.WriteLine();
+            count += 1;
+        }
+        
     }
 }

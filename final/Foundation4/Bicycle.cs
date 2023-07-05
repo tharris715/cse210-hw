@@ -1,14 +1,13 @@
 public class Bicycle : Activity {
-
+    // create unique sublass attribute
     private int _speed;
-
-    private string _type = "Cycling";
 
     public override double Distance()
     {
-        double distance = Speed()/base._length/60;
+        double distance = GetLength()/Speed()*60;
         return distance;
     }
+    // speed provided as attribute
     public override double Speed()
     {
         return _speed;
@@ -19,8 +18,8 @@ public class Bicycle : Activity {
         return pace;
     }
 
-    public Bicycle(int length, int speed) : base(length) {
-        
+    public Bicycle(string type, int length, int speed) : base(type, length) {
+        _speed = speed;
     }
 
 }

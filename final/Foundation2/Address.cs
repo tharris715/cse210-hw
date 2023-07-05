@@ -5,7 +5,6 @@ public class Address {
     private string _state;
     private string _country;
 
-
     public string GetCountry() {
         return _country;
     }

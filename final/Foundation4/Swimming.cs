@@ -1,28 +1,26 @@
 public class Swimming : Activity {
-
-    private int _laps;
-    private string _type = "Swimming";
+    // create unique sublass attribute
+    private double _laps;
     
-
-    
+    // use laps to get the ditance, then use distance for speed and pace
     public override double Distance() {
-        double distanceKM = _laps * 50 / 1000;
+        double distance = _laps * 50 / 1000;
 
-        return distanceKM;
+        return distance;
     }
     public override double Speed()
     {
-        double speed = Distance() / base._length * 60;
+        double speed = Distance() / GetLength() * 60;
         return speed;
     }
     public override double Pace()
     {
-        double pace = base._length / Distance();
-        return base.Pace();
+        double pace = GetLength() / Distance();
+        return pace;
     }
 
-    public Swimming(int length, int laps) : base(length) {
-        
+    public Swimming(string type, int length, int laps) : base(type, length) {
+        _laps = laps;
     }
 
 }

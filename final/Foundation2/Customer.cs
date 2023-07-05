@@ -21,5 +21,4 @@ public class Customer {
         return _address.GetAddress();
     }
 
-
 }

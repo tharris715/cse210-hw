@@ -1,30 +1,27 @@
-public class Activity {
+public abstract class Activity {
+    // create shared attirbutes
+    private DateTime _date = DateTime.Today;
+    private int _length;
+    private string _type;
 
-    private DateTime _date;
-    protected int _length;
-    private string _type = "";
-    
-    protected void SetDate() {
-        _date = DateTime.Today;
+    public int GetLength() {
+        return _length;
     }
 
-    public virtual double Distance() {
-        return 0;
-    }
+    // create abstract methods to be overridden in each activity subclass
+    public abstract double Distance();
+    public abstract double Speed();
+    public abstract double Pace();
 
-    public virtual double Speed() {
-        return 0;
-    }
-    public virtual double Pace() {
-        return 0;
-    }
-
+    //Display the summary of teh activity outcomes, round values to 2 decimal places
     public void GetSummary() {
-        Console.WriteLine($"{_date} {_type} ({_length}): Distance {Distance()} km, Speed {Speed()} kph, Pace {Pace} min per km");
+        Console.WriteLine($"{_date.ToString("dd MMM yyyy")} {_type} ({_length} min): Distance {Math.Round(Distance(), 2)} km, Speed {Math.Round(Speed(), 2)} kph, Pace: {Math.Round(Pace(), 2)} min per km\n");
     }
 
-    public Activity(int length) {
-
+    // Activity constructor, set type and length attributes shared by all subclasses
+    public Activity(string type, int length) {
+        _type = type;
+        _length = length;
     }
 
 }

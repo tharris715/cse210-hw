@@ -40,6 +40,9 @@ class Program
         Console.WriteLine();
         Console.WriteLine("Order 1 Shipping Label:");
         order1.DisplayShippingLabel();
+        Console.WriteLine();
+        Console.WriteLine("Order 1 Total Cost:");
+        order1.TotalCost(productList1);
 
         Console.WriteLine();
 
@@ -48,6 +51,9 @@ class Program
         Console.WriteLine();
         Console.WriteLine("Order 2 Shipping Label:");
         order2.DisplayShippingLabel();
+        Console.WriteLine();
+        Console.WriteLine("Order 2 Total Cost:");
+        order2.TotalCost(productList2);
 
 
     }

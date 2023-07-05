@@ -24,15 +24,17 @@ public class Video {
     //method to display comments
     public string DisplayComment(List<Comment> comments) {
         string com = "";
+        int count = 1;
         foreach (Comment comment in comments) {
-            com += $"{comment._name}: \"{comment._text}\" ";
+            com += $"\n{count}. {comment._name}: \"{comment._text}\" ";
+            count += 1;
         }
         return com;
     }
     //method to combine all video and comment information to display to console.
     public void DisplayVideo() {
 
-        Console.WriteLine($"\"{_title}\", {_author}, {_seconds} seconds long, # of comments: {CommentCount(_comments)}, {DisplayComment(_comments)}");
+        Console.WriteLine($"\"{_title}\" created by {_author}. {_seconds} seconds long, # of comments: {CommentCount(_comments)} {DisplayComment(_comments)}");
     }
 
 }

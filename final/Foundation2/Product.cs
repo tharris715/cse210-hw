@@ -24,5 +24,4 @@ public class Product {
         _quantity = quantity;
     }
 
-
 }
