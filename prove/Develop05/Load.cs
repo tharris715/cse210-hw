@@ -1,6 +1,46 @@
 using System.Linq;
 public class Load {
 
+
+
+    public List<Goal> Loading() {
+        List<Goal> goalsList = new List<Goal>();
+        Console.WriteLine("What is the name of the file you would like to load? ");
+        string loadFile = Console.ReadLine();
+        SetTotalPoints(int.Parse(File.ReadLines(loadFile).First()));
+        using (StreamReader inputFile = new StreamReader(loadFile)) {
+            string line = inputFile.ReadLine();
+            if (line.Contains("Simple")) {
+                goalsList.Add(CreateSimpleGoal(line));
+            }
+            else if (line.Contains("Eternal")) {
+                goalsList.Add(CreateEternalGoal(line));
+            }
+            else if (line.Contains("Checklist")) {
+                goalsList.Add(CreateChecklistGoal(line));
+            }
+        }
+        return goalsList;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private int _totalPoints;
     public void SetTotalPoints(int totalPoints) {
         _totalPoints = totalPoints;
@@ -52,7 +92,8 @@ public class Load {
         string name = parts[0];
         string description = parts[1].TrimStart();
         int points = int.Parse(parts[2]);
-        Goal eternal = new EternalGoal("EternalGoal", name, description, points);
+        bool complete = bool.Parse(parts[3]);
+        Goal eternal = new EternalGoal("EternalGoal", name, description, points, complete);
         return eternal;
     }
 
@@ -62,11 +103,12 @@ public class Load {
         string name = parts[0];
         string description = parts[1].TrimStart();
         int points = int.Parse(parts[2]);
-        int times = int.Parse(parts[3]);
-        int bonus = int.Parse(parts[4]);
-        int complete = int.Parse(parts[5]);
+        bool complete = bool.Parse(parts[3]);
+        int times = int.Parse(parts[4]);
+        int bonus = int.Parse(parts[5]);
+        int timesComplete = int.Parse(parts[6]);
         
-        Goal check = new ChecklistGoal("ChecklistGoal", name, description, points, times, bonus, complete);
+        Goal check = new ChecklistGoal("ChecklistGoal", name, description, points, complete, times, bonus, timesComplete);
         return check;
     }
 

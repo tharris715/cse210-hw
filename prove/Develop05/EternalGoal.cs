@@ -3,17 +3,14 @@ public class EternalGoal : Goal {
     public EternalGoal() : base() {
         //user input constructor version
         SetType("EternalGoal");
-        // get user input to fill in goal parameters
-        Console.Write("What is the name of your goal? ");
-        SetName(Console.ReadLine());
-        Console.Write("What is a short description of the goal? ");
-        SetDescription(Console.ReadLine());
-        Console.Write("What is the amount of points associated with this goal? ");
-        SetPoints(int.Parse(Console.ReadLine()));        
     }
 
-    public EternalGoal(string type, string name, string description, int points) : base(type, name, description, points) {
+    public EternalGoal(string type, string name, string description, int points, bool complete) : base(type, name, description, points, complete) {
         //constructor version for loading in a file
+        IsComplete();
+    }
+    public override void IsComplete() {
+        SetComplete(false);    
     }
 
     public override string GetStringRepresentation() {

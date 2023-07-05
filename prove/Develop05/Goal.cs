@@ -1,25 +1,30 @@
 public class Goal{
 
-    private string _type;
-    private string _name;
-    private string _description;
-    private int _points;
-    private int _checkComplete;
+    protected string _type;
+    protected string _name;
+    protected string _description;
+    protected int _points;
+    protected bool _complete;
+    protected int _timesComplete;
 
-    private bool _complete;
+
+    public Goal(string type, string name, string description, int points, bool complete) {   
+        _type = type;
+        _name = name;
+        _description = description;
+        _points = points;
+        _complete = complete;
+    } 
     
     public Goal() {
-        //because of the way I load in goals I had to move the shared pieces to the sub classes
-        //not sure how to overcome this and add common code back here
+        // get user input to fill in goal parameters
+        Console.Write("What is the name of your goal? ");
+        SetName(Console.ReadLine());
+        Console.Write("What is a short description of the goal? ");
+        SetDescription(Console.ReadLine());
+        Console.Write("What is the amount of points associated with this goal? ");
+        SetPoints(int.Parse(Console.ReadLine()));
     }
-
-    public Goal(string type, string name, string description, int points) {   
-        //constructor version for loading in goals
-        SetType(type);
-        SetName(name);
-        SetDescription(description);
-        SetPoints(points);
-    } 
 
     public virtual string GetGoalType() {
         return _type;
@@ -40,8 +45,8 @@ public class Goal{
     public virtual int GetTimes() {
         return 0;
     }
-    public virtual int GetCheckComplete() {
-        return _checkComplete;
+    public virtual int GetTimesComplete() {
+        return _timesComplete;
     }
     
     public void SetType(string type) {
