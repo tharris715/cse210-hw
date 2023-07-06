@@ -1,4 +1,5 @@
-0
-SimpleGoal:simple, description, 12, False
-EternalGoal:eternal, eternal description, 45, False
-ChecklistGoal:checklist, check description, 15, False, 3, 200, 0
+59
+SimpleGoal:ss, www, 10, True
+EternalGoal:ee, qq, 15, False
+ChecklistGoal:ch, ch de, 20, False, 5, 100, 3
+AntiGoal:anti, anti desc, -5, False, 2, 1

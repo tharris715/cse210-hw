@@ -1,27 +1,16 @@
 public class SimpleGoal : Goal {
-
-    public SimpleGoal() : base(){   
-        //user input constructor version
+    //user input constructor version
+    public SimpleGoal() : base() {   
         SetType("SimpleGoal"); 
-        
+        SetComplete(false);
     }
+    //constructor version for loading in a file
     public SimpleGoal(string type, string name, string description, int points, bool complete) : base(type, name, description, points, complete) {   
-
     }   
-    
+    // set _complete to true when goal is recorded
     public override void IsComplete() {
-        SetComplete(true);    
+        if (_complete != true) {
+            SetComplete(true);    
+        }
     }
-
-    public override string GetStringRepresentation() {
-        //take the parameters/attributes and make a string out of them
-        string type = GetGoalType();
-        string name = GetName();
-        string description = GetDescription();
-        int points = GetPoints();
-        bool complete = GetComplete();
-        return $"{type}:{name}, {description}, {points}, {complete}";
-
-    }
-
 }

@@ -1,46 +1,5 @@
 using System.Linq;
 public class Load {
-
-
-
-    public List<Goal> Loading() {
-        List<Goal> goalsList = new List<Goal>();
-        Console.WriteLine("What is the name of the file you would like to load? ");
-        string loadFile = Console.ReadLine();
-        SetTotalPoints(int.Parse(File.ReadLines(loadFile).First()));
-        using (StreamReader inputFile = new StreamReader(loadFile)) {
-            string line = inputFile.ReadLine();
-            if (line.Contains("Simple")) {
-                goalsList.Add(CreateSimpleGoal(line));
-            }
-            else if (line.Contains("Eternal")) {
-                goalsList.Add(CreateEternalGoal(line));
-            }
-            else if (line.Contains("Checklist")) {
-                goalsList.Add(CreateChecklistGoal(line));
-            }
-        }
-        return goalsList;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private int _totalPoints;
     public void SetTotalPoints(int totalPoints) {
         _totalPoints = totalPoints;
@@ -67,6 +26,9 @@ public class Load {
             }
             else if (parts[0] == "ChecklistGoal") {
                 goalList.Add(CreateChecklistGoal(parts2));
+            }
+            else if (parts[0] == "AntiGoal") {
+                goalList.Add(CreateAntiGoal(parts2));
             }
         }
         return goalList;
@@ -110,6 +72,18 @@ public class Load {
         
         Goal check = new ChecklistGoal("ChecklistGoal", name, description, points, complete, times, bonus, timesComplete);
         return check;
+    }
+    public Goal CreateAntiGoal(string aGoal) { 
+        // takes a string and turns it into an AntiGoal, no user input
+        string[] parts = aGoal.Split(",");
+        string name = parts[0];
+        string description = parts[1].TrimStart();
+        int points = int.Parse(parts[2]);
+        bool complete = bool.Parse(parts[3]);
+        int escalation = int.Parse(parts[4]);
+        int timesDone = int.Parse(parts[5]);
+        Goal anti = new AntiGoal("AntiGoal", name, description, points, complete, escalation, timesDone);
+        return anti;
     }
 
 }

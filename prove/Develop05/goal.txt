@@ -1,5 +1,6 @@
-0
-SimpleGoal:simple goal, this is my description, 15, False
-EternalGoal:eternal goal, eternal description, 20
-ChecklistGoal:checklist goal, checklist description, 50, 4, 100, 0
-SimpleGoal:simple goal 2, a new description, 25, False
+212
+SimpleGoal:simple, simple description, 10, True
+EternalGoal:eternal, eternal deescription, 15, False
+ChecklistGoal:checklist, checklist description, 170, True, 3, 150, 3
+SimpleGoal:new s, new des, 13, False
+AntiGoal:Anti Goal, Anti Description, -14, False, 3, 5
