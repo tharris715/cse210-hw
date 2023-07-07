@@ -11,7 +11,7 @@ public class Order {
         }
     }
     // print the shipping label to the console
-    //require customer information and address as a string
+    // require customer information and address as a string
     public void DisplayShippingLabel() {
         Console.WriteLine($"{_customer.GetCustomer()}");
         Console.WriteLine($"{_customer.GetAddress2()}");

@@ -35,7 +35,7 @@ class Program
         // Display
         Console.Clear();
 
-        Console.WriteLine("Order 1 packing Label:");
+        Console.WriteLine("Order 1 Packing Label:");
         order1.DisplayPackingLabel(productList1);
         Console.WriteLine();
         Console.WriteLine("Order 1 Shipping Label:");
@@ -46,7 +46,7 @@ class Program
 
         Console.WriteLine();
 
-        Console.WriteLine("Order 2 packing Label:");
+        Console.WriteLine("Order 2 Packing Label:");
         order2.DisplayPackingLabel(productList2);
         Console.WriteLine();
         Console.WriteLine("Order 2 Shipping Label:");
@@ -54,7 +54,6 @@ class Program
         Console.WriteLine();
         Console.WriteLine("Order 2 Total Cost:");
         order2.TotalCost(productList2);
-
 
     }
 }
