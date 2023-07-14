@@ -3,7 +3,7 @@ public class Order {
     private List<Product> _products;
     private Customer _customer;
     
-    //Show the packing label on the console as well as teh total cost, 
+    //Show the packing label on the console as well as the total cost, 
     //requires a list of products, customer address
     public void DisplayPackingLabel(List<Product> products) {
         foreach (Product product in products) {
